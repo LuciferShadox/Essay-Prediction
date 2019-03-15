@@ -11,14 +11,13 @@ from sklearn.externals import joblib
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.metrics import mean_squared_error
 import time
-
+vectorizer = CountVectorizer(max_features = 5000, ngram_range=(1, 3), stop_words='english')
 def get_data():
     dataset=pd.read_excel('training_set_rel3.xls',parse_cols=6)
     return dataset
 
 #bag of Words
 def BOW(essay):
-    vectorizer = CountVectorizer(max_features = 5000, ngram_range=(1, 3), stop_words='english')
     countvectors=(vectorizer.fit_transform(essay)).toarray()
     # to know the mapped words
     # featurenames=vectorizer.get_feature_names()
